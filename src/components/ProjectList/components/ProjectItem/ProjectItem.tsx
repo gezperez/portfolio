@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import { Project } from "@/types";
 import Image from "next/image";
 import { useInView, motion, Variants } from "framer-motion";
-import TechList from "../TechList";
-import LinksList from "@/components/LinksList";
 
 const cardVariants: Variants = {
   offscreen: {
