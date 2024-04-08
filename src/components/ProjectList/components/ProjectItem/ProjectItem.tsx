@@ -169,6 +169,18 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
               <div className="font-normal text-xl flex text-description">
                 {description}
               </div>
+              <div className="flex flex-row items-center justify-start mt-10">
+                {technologies.map(({ name, icon }, index) => (
+                  <Image
+                    className="mx-5"
+                    key={index}
+                    src={icon}
+                    width={50}
+                    height={50}
+                    alt={name}
+                  />
+                ))}
+              </div>
             </motion.div>
           </motion.div>
 
