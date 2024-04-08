@@ -8,6 +8,7 @@ type Tech = {
 type Project = {
   position: string;
   company: string;
+  companyColor: string;
   description: string;
   initialDate: string;
   endDate: string;
