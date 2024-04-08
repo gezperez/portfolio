@@ -5,7 +5,7 @@ import { ProjectItem } from "./components";
 
 const ProjectList = () => {
   return projects.map((project, index) => (
-    <ProjectItem key={index} project={project} />
+    <ProjectItem key={index} index={index} project={project} />
   ));
 };
 

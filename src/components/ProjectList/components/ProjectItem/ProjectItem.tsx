@@ -1,10 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Project } from "@/types";
 import Image from "next/image";
-import { useInView, motion, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useDeviceSize } from "@/hooks";
-
-const duration = 4;
 
 const cardVariants: Variants = {
   closed: {
@@ -81,9 +79,10 @@ const textVariants: Variants = {
 
 interface ProjectItemProps {
   project: Project;
+  index: number;
 }
 
-const ProjectItem = ({ project }: ProjectItemProps) => {
+const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [width, height] = useDeviceSize();
@@ -118,7 +117,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
     },
     open: {
       borderWidth: 0,
-      background: `linear-gradient(to right, ${companyColor}, ${companyColor})`,
+      background: `linear-gradient(to bottom, ${companyColor}, hsla(227, 53%, 100%, 1))`,
       height,
       width,
       rotate: 0,
@@ -130,10 +129,9 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
     },
   };
 
-  const background = `linear-gradient(306deg, ${colors[0]}, ${colors[1]})`;
-
   const ref = useRef(null);
-  const isInView = useInView(ref);
+
+  useEffect(() => {}, []);
 
   return (
     <div className="flex justify-center items-center h-screen" ref={ref}>
