@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { Project } from "@/types";
 import Image from "next/image";
 import { useInView, motion, Variants } from "framer-motion";
+import { useDeviceSize } from "@/hooks";
 
 const duration = 4;
 
@@ -23,6 +24,7 @@ const cardVariants: Variants = {
     rotate: 0,
     borderRadius: "20%",
     marginRight: 60,
+
     transition: {
       type: "spring",
       bounce: 0.2,
@@ -84,6 +86,8 @@ interface ProjectItemProps {
 const ProjectItem = ({ project }: ProjectItemProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const [width, height] = useDeviceSize();
+
   const {
     colors,
     company,
@@ -114,9 +118,9 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
     },
     open: {
       borderWidth: 0,
-      background: `linear-gradient(to right, hsla(227, 53%, 100%, 1), hsla(227, 53%, 100%, 1))`,
-      height: window.innerHeight,
-      width: window.innerWidth,
+      background: `linear-gradient(to right, hsla(227, 53%, 100%, 1), ${colors[1]})`,
+      height,
+      width,
       rotate: 0,
       borderRadius: 0,
       transition: {
