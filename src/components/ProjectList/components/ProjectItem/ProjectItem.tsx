@@ -124,9 +124,8 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
       rotate: 0,
       borderRadius: 0,
       transition: {
-        type: "spring",
         bounce: 0.2,
-        duration: 2,
+        duration: 1,
       },
     },
   };
