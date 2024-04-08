@@ -118,7 +118,7 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
     },
     open: {
       borderWidth: 0,
-      background: `linear-gradient(to right, hsla(227, 53%, 100%, 1), ${colors[1]})`,
+      background: `linear-gradient(to right, ${companyColor}, ${companyColor})`,
       height,
       width,
       rotate: 0,
@@ -138,22 +138,11 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
 
   return (
     <div className="flex justify-center items-center h-screen" ref={ref}>
-      <div className="absolute ml-20 w-1/12 left-0">
-        <div className=" font-semibold text-6xl text-black">{position}</div>
-        <div
-          className="font-semibold text-3xl flex my-6"
-          style={{
-            color: companyColor,
-          }}
-        >
-          {company}
-        </div>
-      </div>
       <motion.div
         initial="closed"
         animate={isOpen ? "open" : "closed"}
         variants={containerVariants}
-        className="absolute flex flex-col justify-center items-center overflow-hidden"
+        className="flex flex-col justify-center items-center overflow-hidden"
       >
         <motion.div
           className="flex flex-row overflow-hidden justify-between items-center h-full w-full"
@@ -172,18 +161,13 @@ const ProjectItem = ({ project }: ProjectItemProps) => {
               variants={textVariants}
               animate={isOpen ? "open" : "closed"}
             >
-              <div className="font-semibold text-6xl text-black">
+              <div className="font-semibold text-6xl text-description">
                 {position}
               </div>
-              <div
-                className="font-semibold text-3xl flex my-6"
-                style={{
-                  color: companyColor,
-                }}
-              >
+              <div className="font-semibold text-3xl flex my-6 text-description">
                 {company}
               </div>
-              <div className="font-normal text-xl flex text-black">
+              <div className="font-normal text-xl flex text-description">
                 {description}
               </div>
             </motion.div>
