@@ -16,6 +16,8 @@ type Project = {
   technologies: Tech[];
   colors: [string, string];
   image: keyof typeof Images;
+  logo: keyof typeof Images;
+  imageCorner: keyof typeof Images;
 };
 
 export type { Project, Tech };

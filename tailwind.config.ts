@@ -15,7 +15,9 @@ const config: Config = {
       },
       colors: {
         react: "#61dafb",
-        description: "#000000",
+        leftDescription: '#FFF',
+        description: "#000",
+        descriptionBackground: "#010920",
       },
     },
     borderRadius: {

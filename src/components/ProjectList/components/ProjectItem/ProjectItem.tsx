@@ -106,7 +106,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
       rotate: 90,
       borderWidth: 5,
       borderColor: "hsla(77, 100%, 0%, 1)",
-      background: `linear-gradient(to right, ${colors[0]}, ${colors[1]})`,
+      background: `linear-gradient(to bottom, ${colors[0]}, ${colors[1]})`,
       borderRadius: 50,
       transition: {
         type: "spring",

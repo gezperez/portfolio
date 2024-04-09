@@ -46,11 +46,13 @@ const projects: Project[] = [
       },
     ],
     colors: ["hsla(264, 100%, 58%, 1)", "hsla(264, 100%, 37%, 1)"],
-    image: Images.GOALSETTER,
+    logo: Images.GOALSETTER,
+    image: Images.GOALSETTER_SCREEN,
+    imageCorner: Images.GOALSETTER_CORNER,
   },
   {
     position: "React Native Developer",
-    company: "LightSpeed",
+    company: "Coinigy",
     companyColor: "hsla(205, 100%, 71%, 1)",
     description:
       "During my tenure at LightSpeed, I undertook a significant project involving a crypto exchange application. In this capacity, I led the implementation of React Native best practices to elevate code quality and maintainability. I focused on optimizing performance for crucial features, guaranteeing a seamless user experience, particularly under challenging circumstances. Additionally, I took the initiative to build a scalable and reusable design system, promoting consistency and efficiency across the application's development lifecycle.",
@@ -95,7 +97,9 @@ const projects: Project[] = [
       },
     ],
     colors: ["hsla(205, 100%, 71%, 1)", "hsla(205, 100%, 50%, 1"],
-    image: Images.LIGHTSPEED,
+    logo: Images.COINIGY,
+    image: Images.COINIGY_SCREEN,
+    imageCorner: Images.COINIGY_CORNER,
   },
   {
     position: "Full Stack Developer",
@@ -156,7 +160,9 @@ const projects: Project[] = [
       },
     ],
     colors: ["hsla(18, 100%, 65%, 1)", "hsla(18, 100%, 51%, 1)"],
-    image: Images.BANCO_DEL_SOL,
+    logo: Images.BANCO_DEL_SOL,
+    image: Images.BANCO_DEL_SOL_SCREEN,
+    imageCorner: Images.BANCO_DEL_SOL_CORNER,
   },
   {
     position: "React Native Developer",
@@ -201,7 +207,9 @@ const projects: Project[] = [
       },
     ],
     colors: ["hsla(128, 53%, 59%, 1)", "hsla(128, 53%, 85%, 1)"],
-    image: Images.REBA,
+    logo: Images.REBA,
+    image: Images.REBA_SCREEN,
+    imageCorner: Images.REBA_CORNER,
   },
   {
     position: "ReactJS Developer",
@@ -242,7 +250,9 @@ const projects: Project[] = [
       },
     ],
     colors: ["hsla(153, 100%, 80%, 1)", "hsla(193, 100%, 53%, 1)"],
-    image: Images.PERSONAL,
+    logo: Images.PERSONAL,
+    image: Images.PERSONAL_SCREEN,
+    imageCorner: Images.PERSONAL_CORNER,
   },
 ];
 

@@ -1,10 +1,9 @@
-import { DevDescription, LinksList, ProjectList } from "@/components";
+import { Projects } from "@/components";
 
-export default function Home() {
+export default function Page() {
   return (
     <main>
-      <DevDescription />
-      <ProjectList />
+      <Projects />
     </main>
   );
 }

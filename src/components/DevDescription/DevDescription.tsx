@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useRef } from "react";
 
 const firstName = "Ezequiel";
@@ -8,12 +10,14 @@ const lastName = "Perez";
 
 const DevDescription = () => {
   const ref = useRef(null);
+  const pathname = usePathname();
 
   return (
     <div
       ref={ref}
       className="h-screen flex flex-col justify-center items-center drop-shadow-xl mb-10"
     >
+     
       <div>
         <div className="flex flex-row">
           {firstName.split("").map((value, index) => (
