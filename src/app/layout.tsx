@@ -1,7 +1,7 @@
 import "./globals.css";
-import { Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 
-export const montserrat = Montserrat({ subsets: ["latin"] });
+export const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Ezequiel Perez Portfolio",
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className={`${montserrat.className} antialiased`}>
+        <main className={`${inter.className} antialiased`}>
           {children}
         </main>
       </body>
