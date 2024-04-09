@@ -10,6 +10,8 @@ const Component = () => {
 
   const company = searchParams.get("company");
 
+  const index = searchParams.get("index");
+
   const getProject = () => {
     if (company) {
       return projects.find((project) => project.company === company);
@@ -27,8 +29,8 @@ const Component = () => {
   return (
     <Suspense>
       <main>
-        <ProjectDetailHeader project={project} />
-        <ProjectTechnologies project={project} />
+        <ProjectDetailHeader project={project} index={index} />
+        <ProjectTechnologies project={project} index={index} />
       </main>
     </Suspense>
   );

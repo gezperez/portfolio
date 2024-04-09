@@ -3,24 +3,30 @@
 import { Project } from "@/types";
 import { Variants, motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 type ProjectDetailHeaderProps = {
   project: Project;
+  index: string | null;
 };
 
-const ProjectDetailHeader = ({ project }: ProjectDetailHeaderProps) => {
+const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const width = global.window && window.innerWidth;
+  const router = useRouter();
 
-  const height = global.window && window.innerHeight;
+  const width = global.window && window.innerWidth;
 
   const { imageCorner, company, description, logo, position } = project;
 
   const leftWindowVariants: Variants = {
     closed: {
       x: -width / 2,
+      transition: {
+        duration: 1.5,
+        delay: 1,
+      },
     },
     open: {
       x: 0,
@@ -33,6 +39,10 @@ const ProjectDetailHeader = ({ project }: ProjectDetailHeaderProps) => {
   const imageCornerVariants: Variants = {
     closed: {
       opacity: 0,
+      transition: {
+        duration: 1,
+        delay: 0.5,
+      },
     },
     open: {
       opacity: 1,
@@ -47,6 +57,12 @@ const ProjectDetailHeader = ({ project }: ProjectDetailHeaderProps) => {
     closed: {
       x: -width / 2,
       opacity: 0,
+      transition: {
+        type: "spring",
+        bounce: 0.2,
+        duration: 2,
+        delay: 0.5,
+      },
     },
     open: {
       x: 0,
@@ -63,14 +79,23 @@ const ProjectDetailHeader = ({ project }: ProjectDetailHeaderProps) => {
   const descriptionVariants: Variants = {
     closed: {
       opacity: 0,
+      transition: {
+        duration: 0.5,
+      },
     },
     open: {
       opacity: 1,
       transition: {
-        duration: 2,
-        delay: 2,
+        duration: 1,
+        delay: 3,
       },
     },
+  };
+
+  const handleClosePress = () => {
+    setIsOpen(false);
+
+    setTimeout(() => router.push(`/?reset=${true}&index=${index}`), 3000);
   };
 
   useEffect(() => {
@@ -108,13 +133,14 @@ const ProjectDetailHeader = ({ project }: ProjectDetailHeaderProps) => {
           </motion.div>
         </motion.div>
       </div>
-      <div className="w-1/2 ">
+      <div className="w-1/2">
         <motion.div
           variants={descriptionVariants}
           initial="closed"
           animate={isOpen ? "open" : "closed"}
           className="h-screen  flex flex-col justify-center items-center mx-20 text-justify"
         >
+          <div onClick={handleClosePress} className="w-10 h-10 bg-black" />
           <Image
             alt={logo}
             src={logo}
@@ -125,9 +151,7 @@ const ProjectDetailHeader = ({ project }: ProjectDetailHeaderProps) => {
             className="drop-shadow-lg"
           />
 
-          <div className="text-description font-normal mt-20 text-xl">
-            {description}
-          </div>
+          <div className="text-description font-normal mt-20 text-xl"></div>
         </motion.div>
       </div>
     </div>

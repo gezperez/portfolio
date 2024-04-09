@@ -1,15 +1,19 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import { useDeviceSize } from "@/hooks";
 import { Project } from "@/types";
 import { Variants, motion } from "framer-motion";
 import Image from "next/image";
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const logoVariants: Variants = {
   closed: {
     opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: 1,
+    },
   },
   open: {
     opacity: 0,
@@ -31,9 +35,17 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
 
   const router = useRouter();
 
+  const searchParams = useSearchParams();
+
+  const paramsReset = searchParams.get("reset");
+
+  const paramsIndex = searchParams.get("index");
+
   const [projectIndex, setProjectIndex] = useState<number | undefined>(
     undefined
   );
+
+  const reset = paramsReset && Number(paramsIndex) === index;
 
   const isProjectSelected = projectIndex === index;
 
@@ -64,8 +76,8 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const phoneVariants: Variants = {
     closed: {
       scale: 1,
-      zIndex: 0,
       x: 0,
+      zIndex: reset ? 999 : 0,
       transition: {
         duration: 1,
       },
@@ -87,8 +99,17 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
     }
 
     setProjectIndex(index);
-    return setTimeout(() => router.push(`/project?company=${company}`), 2000);
+    return setTimeout(
+      () => router.push(`/project?company=${company}&index=${index}`),
+      2000
+    );
   };
+
+  useEffect(() => {
+    if (reset) {
+      setTimeout(() => router.push(`/`), 2000);
+    }
+  }, [reset, router]);
 
   if (!width) {
     return null;
@@ -99,7 +120,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
       key={index}
       className="relative overflow-hidden"
       variants={phoneVariants}
-      initial="closed"
+      initial={reset ? "open" : "closed"}
       animate={isProjectSelected ? "open" : "closed"}
       onClick={() => handleProjectPress(index)}
     >
@@ -123,7 +144,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
       >
         <motion.div
           variants={logoVariants}
-          initial="closed"
+          initial={reset ? "open" : "closed"}
           animate={isProjectSelected ? "open" : "closed"}
         >
           <Image
