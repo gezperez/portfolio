@@ -30,7 +30,7 @@ const Component = () => {
     <Suspense>
       <main>
         <ProjectDetailHeader project={project} index={index} />
-        <ProjectTechnologies project={project} index={index} />
+        <ProjectTechnologies project={project} />
       </main>
     </Suspense>
   );
