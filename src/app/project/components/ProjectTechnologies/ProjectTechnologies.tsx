@@ -9,9 +9,11 @@ type ProjectTechnologiesProps = {
 };
 
 const ProjectTechnologies = ({ project }: ProjectTechnologiesProps) => {
+  const firstTechnologies = project.technologies.slice(0, 2);
+
   return (
     <div className="flex h-screen bg-slate-100">
-      {project.technologies.map((technology, index) => (
+      {firstTechnologies.map((technology, index) => (
         <div
           key={index}
           style={{

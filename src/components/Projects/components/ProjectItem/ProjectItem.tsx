@@ -87,7 +87,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
       zIndex: 999,
       x: getPosition(),
       transition: {
-        duration: 2,
+        duration: 1.5,
         delay: 0.5,
       },
     },
@@ -101,7 +101,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
     setProjectIndex(index);
     return setTimeout(
       () => router.push(`/project?company=${company}&index=${index}`),
-      2000
+      1500
     );
   };
 

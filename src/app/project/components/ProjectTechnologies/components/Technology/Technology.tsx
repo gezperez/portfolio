@@ -10,7 +10,7 @@ const Technology = ({ technology }: TechnologyProps) => {
 
   return (
     <div>
-      <Image alt={name} src={icon} width={200} />
+      <Image alt={name} src={icon} width={150} />
     </div>
   );
 };

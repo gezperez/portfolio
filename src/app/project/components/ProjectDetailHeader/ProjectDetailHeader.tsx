@@ -5,6 +5,7 @@ import { Variants, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import { CgClose } from "react-icons/cg";
 
 type ProjectDetailHeaderProps = {
   project: Project;
@@ -18,20 +19,21 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
 
   const width = global.window && window.innerWidth;
 
-  const { imageCorner, company, description, logo, position } = project;
+  const { imageCorner, company, description, logo, position, companyColor } =
+    project;
 
   const leftWindowVariants: Variants = {
     closed: {
       x: -width / 2,
       transition: {
-        duration: 1.5,
+        duration: 1,
         delay: 1,
       },
     },
     open: {
       x: 0,
       transition: {
-        duration: 1.5,
+        duration: 1,
       },
     },
   };
@@ -48,7 +50,7 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
       opacity: 1,
       transition: {
         duration: 1,
-        delay: 2,
+        delay: 1,
       },
     },
   };
@@ -71,7 +73,7 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
         type: "spring",
         bounce: 0.2,
         duration: 2,
-        delay: 2,
+        delay: 1,
       },
     },
   };
@@ -87,7 +89,7 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
       opacity: 1,
       transition: {
         duration: 1,
-        delay: 3,
+        delay: 2,
       },
     },
   };
@@ -95,7 +97,7 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
   const handleClosePress = () => {
     setIsOpen(false);
 
-    setTimeout(() => router.push(`/?reset=${true}&index=${index}`), 3000);
+    setTimeout(() => router.push(`/?reset=${true}&index=${index}`), 2000);
   };
 
   useEffect(() => {
@@ -133,14 +135,21 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
           </motion.div>
         </motion.div>
       </div>
-      <div className="w-1/2">
+      <div className="h-screen flex w-1/2 items-start justify-center pt-10">
         <motion.div
           variants={descriptionVariants}
           initial="closed"
           animate={isOpen ? "open" : "closed"}
-          className="h-screen  flex flex-col justify-center items-center mx-20 text-justify"
+          className="flex flex-col justify-center items-center mx-20 text-justify"
         >
-          <div onClick={handleClosePress} className="w-10 h-10 bg-black" />
+          <motion.div
+            onClick={handleClosePress}
+            className="fixed top-10 right-10 z-[999]"
+            whileHover={{ scale: 1.3 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <CgClose color={"#010920"} size={50} />
+          </motion.div>
           <Image
             alt={logo}
             src={logo}
