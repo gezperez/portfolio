@@ -1,7 +1,5 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-export const inter = Inter({ subsets: ["latin"] });
+import { montserrat } from "@/assets/fonts";
 
 export const metadata = {
   title: "Ezequiel Perez Portfolio",
@@ -15,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main className={`${inter.className} antialiased`}>
+        <main className={`${montserrat.className} antialiased`}>
           {children}
         </main>
       </body>
