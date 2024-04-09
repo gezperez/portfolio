@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { ProjectDetailHeader, ProjectTechnologies } from "./components";
 import projects from "@/data/projects";
@@ -24,9 +25,11 @@ export default function Page() {
   }
 
   return (
-    <main>
-      <ProjectDetailHeader project={project} />
-      <ProjectTechnologies project={project} />
-    </main>
+    <Suspense>
+      <main>
+        <ProjectDetailHeader project={project} />
+        <ProjectTechnologies project={project} />
+      </main>
+    </Suspense>
   );
 }
