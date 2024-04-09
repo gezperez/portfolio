@@ -19,12 +19,12 @@ const logoVariants: Variants = {
   },
 };
 
-type ProjectProps = {
+type ProjectItemProps = {
   project: Project;
   index: number;
 };
 
-const Project = ({ project, index }: ProjectProps) => {
+const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const { company, logo, image } = project;
 
   const [width, height] = useDeviceSize();
@@ -145,4 +145,4 @@ const Project = ({ project, index }: ProjectProps) => {
   );
 };
 
-export default Project;
+export default ProjectItem;
