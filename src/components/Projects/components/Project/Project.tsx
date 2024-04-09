@@ -87,7 +87,7 @@ const Project = ({ project, index }: ProjectProps) => {
     }
 
     setProjectIndex(index);
-    return setTimeout(() => router.push(`/project?index=${index}`), 2000);
+    return setTimeout(() => router.push(`/project?company=${company}`), 2000);
   };
 
   if (!width) {

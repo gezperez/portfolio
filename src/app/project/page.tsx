@@ -2,15 +2,26 @@
 
 import { useSearchParams } from "next/navigation";
 import { ProjectDetailHeader, ProjectTechnologies } from "./components";
-import { Project } from "@/types";
 import projects from "@/data/projects";
 
 export default function Page() {
   const searchParams = useSearchParams();
 
-  const index = searchParams.get("index");
+  const company = searchParams.get("company");
 
-  const project: Project = projects[index] || {};
+  const getProject = () => {
+    if (company) {
+      return projects.find((project) => project.company === company);
+    }
+
+    return undefined;
+  };
+
+  const project = getProject();
+
+  if (!project) {
+    return null;
+  }
 
   return (
     <main>
