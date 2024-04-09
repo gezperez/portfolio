@@ -1,5 +1,5 @@
 const Images = {
-  GOALSETTER: require("./goalsetter.png"),
+  GOALSETTER: require("./asd.png"),
   GOALSETTER_SCREEN: require("./goalsetter-screen.png"),
   GOALSETTER_CORNER: require("./goalsetter-corner.png"),
   COINIGY: require("./coinigy.png"),
