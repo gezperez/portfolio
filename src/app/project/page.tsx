@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { ProjectDetailHeader, ProjectTechnologies } from "./components";
 import projects from "@/data/projects";
 
-export default function Page() {
+const Component = () => {
   const searchParams = useSearchParams();
 
   const company = searchParams.get("company");
@@ -30,6 +30,14 @@ export default function Page() {
         <ProjectDetailHeader project={project} />
         <ProjectTechnologies project={project} />
       </main>
+    </Suspense>
+  );
+};
+
+export default function Page() {
+  return (
+    <Suspense>
+      <Component />
     </Suspense>
   );
 }
