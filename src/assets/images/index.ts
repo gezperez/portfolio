@@ -8,7 +8,7 @@ const Images = {
   PERSONAL: require("./Personal.png"),
   PERSONAL_SCREEN: require("./personal-screen.png"),
   PERSONAL_CORNER: require("./personal-corner.png"),
-  BANCO_DEL_SOL: require("./BancoSol.png"),
+  BANCO_DEL_SOL: require("./bancodelsol.png"),
   BANCO_DEL_SOL_SCREEN: require("./bancodelsol-screen.png"),
   BANCO_DEL_SOL_CORNER: require("./bancodelsol-corner.png"),
   REBA: require("./Reba.png"),
