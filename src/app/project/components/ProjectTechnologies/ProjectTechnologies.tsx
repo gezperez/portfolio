@@ -3,7 +3,7 @@
 import React from "react";
 import { Project } from "@/types";
 import { Technology } from "./components";
-import { useScroll, motion, useTransform, Variants } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 type ProjectTechnologiesProps = {
   project: Project;
@@ -30,18 +30,13 @@ const technologiesVariants: Variants = {
 };
 
 const ProjectTechnologies = ({ project, isOpen }: ProjectTechnologiesProps) => {
-  const { scrollY } = useScroll();
-  const technologiesY = useTransform(scrollY, [0, 200], [0, 150], {
-    clamp: true,
-  });
-
   return (
     <div className="h-screen flex ">
       <motion.div
         variants={technologiesVariants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
-        className="flex flex-col justify-start items-center px-10 w-screen"
+        className="flex flex-col justify-between items-center px-10 w-screen"
       >
         <div className="font-bold text-5xl text-descriptionBackground my-10">
           Technologies
@@ -53,6 +48,7 @@ const ProjectTechnologies = ({ project, isOpen }: ProjectTechnologiesProps) => {
             </div>
           ))}
         </div>
+        <div className="font-bold text-5xl text-descriptionBackground my-10"></div>
       </motion.div>
     </div>
   );
