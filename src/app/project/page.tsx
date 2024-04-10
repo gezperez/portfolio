@@ -44,7 +44,11 @@ const Component = () => {
     <Suspense>
       <ProjectDetailHeader project={project} index={index} isOpen={isOpen} />
       <ProjectTechnologies project={project} isOpen={isOpen} />
-      <CloseProjectIcon index={index} onClose={handleClosePress} />
+      <CloseProjectIcon
+        index={index}
+        isOpen={isOpen}
+        onClose={handleClosePress}
+      />
     </Suspense>
   );
 };
