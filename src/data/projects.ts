@@ -53,7 +53,7 @@ const projects: Project[] = [
   {
     position: "React Native Developer",
     company: "Coinigy",
-    companyColor: "hsla(207, 71%, 42%, 1)",
+    companyColor: "hsl(207, 71%, 42%, 1)",
     description:
       "During my tenure at Coinigy, I undertook a significant project involving a crypto exchange application. In this capacity, I led the implementation of React Native best practices to elevate code quality and maintainability. I focused on optimizing performance for crucial features, guaranteeing a seamless user experience, particularly under challenging circumstances. Additionally, I took the initiative to build a scalable and reusable design system, promoting consistency and efficiency across the application's development lifecycle.",
     initialDate: "Feb 2021",

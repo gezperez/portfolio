@@ -4,17 +4,20 @@ import { Project } from "@/types";
 import { Variants, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 
 type ProjectDetailHeaderProps = {
   project: Project;
   index: string | null;
+  isOpen: boolean;
 };
 
-const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const ProjectDetailHeader = ({
+  project,
+  index,
+  isOpen,
+}: ProjectDetailHeaderProps) => {
   const router = useRouter();
 
   const width = global.window && window.innerWidth;
@@ -81,12 +84,14 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
   const descriptionVariants: Variants = {
     closed: {
       opacity: 0,
+      background: `linear-gradient(to left, hsla(227, 53%, 100%, 1), hsla(227, 53%, 100%, 1))`,
       transition: {
         duration: 0.5,
       },
     },
     open: {
       opacity: 1,
+      background: `linear-gradient(to left, hsla(225, 94%, 89%, 1), hsla(227, 53%, 100%, 1))`,
       transition: {
         duration: 1,
         delay: 2,
@@ -94,18 +99,8 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
     },
   };
 
-  const handleClosePress = () => {
-    setIsOpen(false);
-
-    setTimeout(() => router.push(`/?reset=${true}&index=${index}`), 2000);
-  };
-
-  useEffect(() => {
-    setIsOpen(true);
-  }, []);
-
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen z-1">
       <div className="w-1/2">
         <motion.div
           className="h-screen bg-descriptionBackground"
@@ -135,25 +130,17 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
           </motion.div>
         </motion.div>
       </div>
-      <div className="h-screen flex w-1/2 items-start justify-center pt-10">
-        <motion.div
-          variants={descriptionVariants}
-          initial="closed"
-          animate={isOpen ? "open" : "closed"}
-          className="flex flex-col justify-center items-center mx-20 text-justify"
-        >
-          <motion.div
-            onClick={handleClosePress}
-            className="fixed top-10 right-10 z-[999]"
-            whileHover={{ scale: 1.3 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <CgClose color={"#010920"} size={50} />
-          </motion.div>
+      <motion.div
+        variants={descriptionVariants}
+        initial="closed"
+        animate={isOpen ? "open" : "closed"}
+        className="h-screen flex w-1/2 items-start justify-center pt-10"
+      >
+        <div className="flex flex-col justify-center items-center mx-20 text-justify">
           <Image
             alt={logo}
             src={logo}
-            width={200}
+            width={100}
             style={{
               borderRadius: 30,
             }}
@@ -161,8 +148,8 @@ const ProjectDetailHeader = ({ project, index }: ProjectDetailHeaderProps) => {
           />
 
           <div className="text-description font-normal mt-20 text-xl"></div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

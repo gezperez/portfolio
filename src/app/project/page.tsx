@@ -1,11 +1,19 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { ProjectDetailHeader, ProjectTechnologies } from "./components";
+import {
+  CloseProjectIcon,
+  ProjectDetailHeader,
+  ProjectTechnologies,
+} from "./components";
 import projects from "@/data/projects";
+import { motion } from "framer-motion";
+import { CgClose } from "react-icons/cg";
 
 const Component = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   const searchParams = useSearchParams();
 
   const company = searchParams.get("company");
@@ -22,16 +30,23 @@ const Component = () => {
 
   const project = getProject();
 
+  useEffect(() => {
+    setIsOpen(true);
+  }, []);
+
+  const handleClosePress = () => {
+    setIsOpen(false);
+  };
+
   if (!project) {
     return null;
   }
 
   return (
     <Suspense>
-      <main>
-        <ProjectDetailHeader project={project} index={index} />
-        <ProjectTechnologies project={project} />
-      </main>
+      <ProjectDetailHeader project={project} index={index} isOpen={isOpen} />
+      <ProjectTechnologies project={project} isOpen={isOpen} />
+      <CloseProjectIcon index={index} onClose={handleClosePress} />
     </Suspense>
   );
 };
