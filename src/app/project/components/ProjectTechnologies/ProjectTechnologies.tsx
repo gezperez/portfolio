@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Project } from "@/types";
 import { Technology } from "./components";
 import { useScroll, motion, useTransform, Variants } from "framer-motion";
@@ -10,18 +10,18 @@ type ProjectTechnologiesProps = {
   isOpen: boolean;
 };
 
-const containerVariants: Variants = {
+const technologiesVariants: Variants = {
   closed: {
-    y: 100,
     opacity: 0,
+    background: `linear-gradient(to top, hsla(227, 53%, 100%, 1), hsla(227, 53%, 100%, 1))`,
     transition: {
       duration: 1,
       delay: 0.5,
     },
   },
   open: {
-    y: 0,
     opacity: 1,
+    background: `linear-gradient(to top, hsla(225, 94%, 89%, 1), hsla(227, 53%, 100%, 1))`,
     transition: {
       duration: 1,
       delay: 2,
@@ -30,48 +30,31 @@ const containerVariants: Variants = {
 };
 
 const ProjectTechnologies = ({ project, isOpen }: ProjectTechnologiesProps) => {
-
-  const firstTechnologies = project.technologies.slice(0, 3);
-
   const { scrollY } = useScroll();
-  const technologiesY = useTransform(scrollY, [0, 200], [0, 200], {
-    clamp: true,
-  });
-
-  const titleY = useTransform(scrollY, [0, 200], [0, 150], {
+  const technologiesY = useTransform(scrollY, [0, 200], [0, 150], {
     clamp: true,
   });
 
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="closed"
-      animate={isOpen ? "open" : "closed"}
-      className="h-screen"
-    >
-      <motion.div className="flex flex-row w-screen justify-between px-10">
-        <motion.div
-          style={{
-            y: titleY,
-          }}
-          className="relative font-bold text-7xl -top-12 z-0 text-descriptionBackground"
-        >
+    <div className="h-screen flex ">
+      <motion.div
+        variants={technologiesVariants}
+        initial="closed"
+        animate={isOpen ? "open" : "closed"}
+        className="flex flex-col justify-start items-center px-10 w-screen"
+      >
+        <div className="font-bold text-5xl text-descriptionBackground my-10">
           Technologies
-        </motion.div>
-        <motion.div
-          className="flex flex-row w-1/2 pl-10 justify-between"
-          style={{
-            y: technologiesY,
-          }}
-        >
-          {firstTechnologies.map((technology, index) => (
-            <div key={index} className="relative flex -top-20">
+        </div>
+        <div className="grid grid-rows-3 grid-flow-col gap-12">
+          {project.technologies.map((technology, index) => (
+            <div key={index}>
               <Technology technology={technology} />
             </div>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -9,8 +9,11 @@ const Technology = ({ technology }: TechnologyProps) => {
   const { icon, name } = technology;
 
   return (
-    <div>
-      <Image alt={name} src={icon} width={150} />
+    <div className="flex flex-col justify-center items-center">
+      <Image alt={name} src={icon} width={80} />
+      <div className="mt-2 text-descriptionBackground font-semibold text-lg">
+        {name}
+      </div>
     </div>
   );
 };

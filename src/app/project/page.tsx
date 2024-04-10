@@ -8,8 +8,6 @@ import {
   ProjectTechnologies,
 } from "./components";
 import projects from "@/data/projects";
-import { motion } from "framer-motion";
-import { CgClose } from "react-icons/cg";
 
 const Component = () => {
   const [isOpen, setIsOpen] = useState(false);

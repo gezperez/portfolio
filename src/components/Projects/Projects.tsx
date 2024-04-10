@@ -8,7 +8,12 @@ type ProjectsProps = {};
 
 const Projects = ({}: ProjectsProps) => {
   return (
-    <div className="h-screen flex flex-row justify-between items-center mx-20 mb-0">
+    <div
+      className="h-screen flex flex-row justify-between items-center px-20"
+      style={{
+        background: `linear-gradient(to top, hsla(225, 94%, 89%, 1), hsla(227, 53%, 100%, 1))`,
+      }}
+    >
       {projects.map((project, index) => (
         <Suspense key={index}>
           <ProjectItem project={project} index={index} />

@@ -22,8 +22,7 @@ const ProjectDetailHeader = ({
 
   const width = global.window && window.innerWidth;
 
-  const { imageCorner, company, description, logo, position, companyColor } =
-    project;
+  const { imageCorner, company, keyPoints, position, companyColor } = project;
 
   const leftWindowVariants: Variants = {
     closed: {
@@ -134,18 +133,22 @@ const ProjectDetailHeader = ({
         variants={descriptionVariants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
-        className="h-screen flex w-1/2 items-start justify-center pt-10"
+        className="h-screen flex w-1/2 p-10"
       >
-        <div className="flex flex-col justify-center items-center mx-20 text-justify">
-          <Image
-            alt={logo}
-            src={logo}
-            width={100}
-            style={{
-              borderRadius: 30,
-            }}
-            className="drop-shadow-lg"
-          />
+        <div className="flex flex-col items-start justify-start">
+          <div className="font-bold text-5xl text-descriptionBackground">
+            Overview
+          </div>
+          <div className="mt-10">
+            {keyPoints.map((value, index) => (
+              <div key={index} className="flex flex-row items-center my-8">
+                <div className="w-2 h-2 rounded-full bg-descriptionBackground" />
+                <div className="ml-6 text-descriptionBackground font-semibold text-2xl">
+                  {value}
+                </div>
+              </div>
+            ))}
+          </div>
 
           <div className="text-description font-normal mt-20 text-xl"></div>
         </div>

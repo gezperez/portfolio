@@ -9,7 +9,6 @@ type Project = {
   position: string;
   company: string;
   companyColor: string;
-  description: string;
   initialDate: string;
   endDate: string;
   duration?: number;
@@ -18,6 +17,7 @@ type Project = {
   image: keyof typeof Images;
   logo: keyof typeof Images;
   imageCorner: keyof typeof Images;
+  keyPoints: string[]
 };
 
 export type { Project, Tech };

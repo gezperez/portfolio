@@ -18,6 +18,9 @@ const Icons = {
   REDUX: require("./redux.png"),
   TYPESCRIPT: require("./typescript.png"),
   ZEPLIN: require("./zeplin.png"),
+  DETOX: require("./detox.png"),
+  SWIFT: require("./swift.png"),
+  JAVA: require("./java.png"),
 };
 
 export default Icons;
