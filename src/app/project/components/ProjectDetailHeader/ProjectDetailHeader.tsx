@@ -111,8 +111,8 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
               alt={company}
               src={imageCorner}
               className="aspect-auto"
-              width={deviceHeight / 2}
-              height={deviceHeight / 2}
+              width={deviceHeight / 1.5}
+              height={deviceHeight / 1.5}
               priority
             />
           </motion.div>
