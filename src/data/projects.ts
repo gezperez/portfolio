@@ -134,7 +134,7 @@ const projects: Project[] = [
         icon: Icons.SWIFT,
       },
     ],
-    colors: ["hsla(205, 100%, 71%, 1)", "hsla(205, 100%, 50%, 1"],
+    colors: ["hsla(212, 52%, 83%, 1)", "hsla(212, 52%, 34%, 1)"],
     logo: Images.COINIGY,
     image: Images.COINIGY_SCREEN,
     imageCorner: Images.COINIGY_CORNER,
