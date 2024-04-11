@@ -34,7 +34,10 @@ const CloseProjectIcon = ({
 
   const handleClosePress = () => {
     onClose();
-    setTimeout(() => router.push(`/?reset=${true}&index=${index}`), 2000);
+    setTimeout(
+      () => router.push(`/?reset=${true}&index=${index}`, { scroll: false }),
+      2000
+    );
   };
 
   return (
@@ -49,7 +52,7 @@ const CloseProjectIcon = ({
     >
       <CgClose
         style={{
-          color: "lightgray",
+          color: "gray",
         }}
         size={40}
       />

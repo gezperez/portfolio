@@ -78,14 +78,12 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
   const descriptionVariants: Variants = {
     closed: {
       opacity: 0,
-      background: `linear-gradient(to bottom, hsla(227, 53%, 100%, 1), hsla(227, 53%, 100%, 1))`,
       transition: {
         duration: 0.5,
       },
     },
     open: {
       opacity: 1,
-      background: `linear-gradient(to bottom, ${colors[0]}, ${colors[1]})`,
       transition: {
         duration: 1,
         delay: 2,
@@ -97,10 +95,14 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
     <div className="flex h-screen z-1">
       <div className="w-1/2">
         <motion.div
-          className="h-screen bg-descriptionBackground"
+          className="h-screen "
           variants={leftWindowVariants}
           initial="closed"
           animate={isOpen ? "open" : "closed"}
+          style={{
+            background: `linear-gradient(to bottom, ${colors[0]}, ${colors[1]})`,
+            borderBottomRightRadius: 100,
+          }}
         >
           <motion.div
             variants={imageCornerVariants}
@@ -122,10 +124,10 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
             animate={isOpen ? "open" : "closed"}
             className="ml-10"
           >
-            <div className="text-leftDescription mt-10 font-normal text-2xl">
+            <div className="text-leftDescription mt-10 text-2xl font-semibold">
               {position.toUpperCase()}
             </div>
-            <div className="text-leftDescription mt-5 font-light text-1xl">
+            <div className="text-leftDescription mt-5 font-normal text-1xl">
               {`${company} App`.toUpperCase()}
             </div>
           </motion.div>
@@ -142,7 +144,7 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
             alt={company}
             src={logo}
             width={250}
-            className="aspect-auto"
+            className="aspect-auto drop-shadow-xl"
             style={{
               borderRadius: 30,
             }}

@@ -2,7 +2,7 @@
 
 import { useDeviceSize } from "@/hooks";
 import React from "react";
-import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
 const links = [
@@ -32,7 +32,7 @@ const DevDescription = () => {
           <div className="text-6xl font-semibold">EZEQUIEL PEREZ</div>
           <div className="font-normal text-2xl mt-2">Software Developer</div>
         </div>
-        <div className="bg-slate-200 w-screen flex justify-center items-start flex-col p-8">
+        <div className="bg-slate-700 w-screen flex justify-center items-start flex-col p-8 text-white">
           <div className="text-justify w-1/2">
             Experienced mobile developer skilled in React Native, with a proven
             track record of delivering user-friendly interfaces and optimizing
@@ -45,7 +45,7 @@ const DevDescription = () => {
           <div className={`flex flex-row mt-6`}>
             {links.map(({ Icon, url }, index) => (
               <a key={index} className="mr-4" href={url} target="_blank">
-                <Icon color="black" size={width / 30} />
+                <Icon color="white" size={width / 30} />
               </a>
             ))}
           </div>

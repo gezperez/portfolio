@@ -13,16 +13,13 @@ const Technology = ({ technology }: TechnologyProps) => {
 
   return (
     <div
-      className="flex flex-col justify-between items-center m-4"
+      className="flex flex-col justify-between items-center m-4 my-0"
       style={{
         height: width / 10,
         width: width / 17,
       }}
     >
       <Image alt={name} src={icon} width={width / 7} height={width / 7} />
-      <div className="mt-2 text-descriptionBackground font-semibold text-lg">
-        {name}
-      </div>
     </div>
   );
 };

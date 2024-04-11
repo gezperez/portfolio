@@ -56,7 +56,9 @@ const Component = () => {
 export default function Page() {
   return (
     <Suspense>
-      <Component />
+      <div>
+        <Component />
+      </div>
     </Suspense>
   );
 }
