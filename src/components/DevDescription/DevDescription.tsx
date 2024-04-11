@@ -1,58 +1,47 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React, { useRef } from "react";
+import Images from "@/assets/images";
+import { useDeviceSize } from "@/hooks";
+import Image from "next/image";
+import React from "react";
+import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 
-const firstName = "Ezequiel";
-const lastName = "Perez";
+const links = [
+  {
+    name: "LinkedIn",
+    Icon: FaLinkedin,
+  },
+  {
+    name: "GitHub",
+    Icon: FaGithub,
+  },
+  {
+    name: "Whatsapp",
+    Icon: FaWhatsapp,
+  },
+];
 
 const DevDescription = () => {
-  const ref = useRef(null);
-  const pathname = usePathname();
+  const width = global.window && window.innerWidth;
 
   return (
-    <div
-      ref={ref}
-      className="h-screen flex flex-col justify-center items-center drop-shadow-xl mb-10"
-    >
-     
-      <div>
-        <div className="flex flex-row">
-          {firstName.split("").map((value, index) => (
-            <motion.div
-              key={index}
-              className="font-semibold text-7xl mb-6"
-              drag
-              whileDrag={{ scale: 1.2 }}
-              dragConstraints={{
-                left: -250,
-                right: 250,
-                bottom: 250,
-                top: -250,
-              }}
-            >
-              {value}
-            </motion.div>
-          ))}
-          <motion.div
-            className="font-semibold text-7xl mb-6 text-react"
-            drag
-            dragConstraints={{
-              left: -250,
-              right: 250,
-              bottom: 250,
-              top: -250,
-            }}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
-          >
-            {lastName}
-          </motion.div>
+    <div className="h-screen flex flex-col justify-center items-center">
+      <div className="h-screen flex flex-col justify-between items-center">
+        <div className="m-6"></div>
+        <div className="flex flex-col z-auto text-black">
+          <div className="text-6xl font-semibold">EZEQUIEL PEREZ</div>
+          <div className="font-normal text-2xl">Software Developer</div>
         </div>
-        <div className="font-normal text-2xl">Software Developer</div>
+        <div className={`flex flex-row m-6`}>
+          {links.map(({ Icon }, index) => (
+            <Icon
+              key={index}
+              color="black"
+              size={width / 30}
+              className="mx-2"
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
