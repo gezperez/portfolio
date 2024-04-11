@@ -3,7 +3,14 @@
 import React from "react";
 import { Project } from "@/types";
 import { Technology } from "./components";
-import { motion, Variants } from "framer-motion";
+import {
+  clamp,
+  cubicBezier,
+  motion,
+  useScroll,
+  useTransform,
+  Variants,
+} from "framer-motion";
 
 type ProjectTechnologiesProps = {
   project: Project;
@@ -12,16 +19,15 @@ type ProjectTechnologiesProps = {
 
 const technologiesVariants: Variants = {
   closed: {
+    y: 100,
     opacity: 0,
-    background: `linear-gradient(to top, hsla(227, 53%, 100%, 1), hsla(227, 53%, 100%, 1))`,
     transition: {
       duration: 1,
-      delay: 0.5,
     },
   },
   open: {
+    y: 0,
     opacity: 1,
-    background: `linear-gradient(to top, hsla(225, 94%, 89%, 1), hsla(227, 53%, 100%, 1))`,
     transition: {
       duration: 1,
       delay: 2,
@@ -30,25 +36,31 @@ const technologiesVariants: Variants = {
 };
 
 const ProjectTechnologies = ({ project, isOpen }: ProjectTechnologiesProps) => {
+  const { scrollY } = useScroll();
+
+  const y = useTransform(scrollY, [0, 250], [0, 200], { clamp: true });
+
   return (
-    <div className="h-screen flex ">
+    <div className="h-screen flex w-screen">
+      <motion.div className="flex flex-col justify-between items-center px-10 w-1/2"></motion.div>
       <motion.div
         variants={technologiesVariants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
-        className="flex flex-col justify-between items-center px-10 w-screen"
+        className="flex flex-col justify-between items-center px-10 w-1/2"
       >
-        <div className="font-bold text-5xl text-descriptionBackground my-10">
-          Technologies
-        </div>
-        <div className="grid grid-rows-3 grid-flow-col gap-12">
+        <motion.div
+          style={{
+            y,
+          }}
+          className="relative grid grid-rows-3 grid-flow-col gap-20 -top-20"
+        >
           {project.technologies.map((technology, index) => (
             <div key={index}>
               <Technology technology={technology} />
             </div>
           ))}
-        </div>
-        <div className="font-bold text-5xl text-descriptionBackground my-10"></div>
+        </motion.div>
       </motion.div>
     </div>
   );

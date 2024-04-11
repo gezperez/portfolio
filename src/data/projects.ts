@@ -284,13 +284,7 @@ const projects: Project[] = [
     position: "ReactJS Developer",
     company: "Personal Flow",
     companyColor: "hsla(193, 100%, 53%, 1)",
-    keyPoints: [
-      "Design System",
-      "Unit Testing",
-      "E2E",
-      "CI/CD",
-      "App Stores Management",
-    ],
+    keyPoints: ["Design System", "Unit Testing", "E2E", "CI/CD"],
     initialDate: "Jun 2018",
     endDate: "Feb 2019",
     technologies: [

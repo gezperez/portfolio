@@ -47,7 +47,12 @@ const CloseProjectIcon = ({
       initial="closed"
       animate={isOpen ? "open" : "closed"}
     >
-      <CgClose color={"#010920"} size={50} />
+      <CgClose
+        style={{
+          color: "lightgray",
+        }}
+        size={40}
+      />
     </motion.div>
   );
 };

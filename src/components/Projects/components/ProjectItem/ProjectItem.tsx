@@ -107,7 +107,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
 
   useEffect(() => {
     if (reset) {
-      setTimeout(() => router.push(`/`), 2000);
+      setTimeout(() => router.push(`/`), 1500);
     }
   }, [reset, router]);
 
