@@ -4,6 +4,8 @@ import { useDeviceSize } from "@/hooks";
 import React from "react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
+import { Variants, motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 const links = [
   {
@@ -22,11 +24,35 @@ const links = [
   },
 ];
 
+const containerVariants: Variants = {
+  closed: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  open: {
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 const DevDescription = () => {
   const [width] = useDeviceSize();
 
+  const searchParams = useSearchParams();
+
+  const reset = searchParams.get("reset");
+
   return (
-    <div className="h-screen flex flex-col justify-center items-center ">
+    <motion.div
+      variants={containerVariants}
+      initial={reset ? "open" : "closed"}
+      animate={reset ? "open" : "closed"}
+      className="h-screen flex flex-col justify-center items-center "
+    >
       <div className="h-screen flex flex-col justify-between items-center">
         <div className="h-full flex flex-col text-black justify-center items-start">
           <div className="text-6xl font-semibold">EZEQUIEL PEREZ</div>
@@ -45,13 +71,13 @@ const DevDescription = () => {
           <div className={`flex flex-row mt-6`}>
             {links.map(({ Icon, url }, index) => (
               <a key={index} className="mr-4" href={url} target="_blank">
-                <Icon color="white" size={width / 30} />
+                <Icon color="white" size={width / 40} />
               </a>
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

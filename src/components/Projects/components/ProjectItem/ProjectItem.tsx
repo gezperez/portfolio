@@ -142,7 +142,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
 
   useEffect(() => {
     if (reset) {
-      setTimeout(() => router.push(`/`, { scroll: false }), 1500);
+      setTimeout(() => router.push(`/`, { scroll: false }), 1000);
     }
   }, [reset, router]);
 

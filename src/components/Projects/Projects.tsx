@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import projects from "@/data/projects";
 import { ProjectItem } from "./components";
 import { useDeviceSize } from "@/hooks";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 type ProjectsProps = {};
 
