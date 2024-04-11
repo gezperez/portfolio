@@ -15,7 +15,6 @@ const Images = {
   REBA_SCREEN: require("./reba-screen.png"),
   REBA_CORNER: require("./reba-corner.png"),
   IPHONE: require("./iphone.png"),
-  MACBOOK: require("./macbook.png"),
 };
 
 export default Images;

@@ -3,14 +3,7 @@
 import React from "react";
 import { Project } from "@/types";
 import { Technology } from "./components";
-import {
-  clamp,
-  cubicBezier,
-  motion,
-  useScroll,
-  useTransform,
-  Variants,
-} from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 
 type ProjectTechnologiesProps = {
   project: Project;
