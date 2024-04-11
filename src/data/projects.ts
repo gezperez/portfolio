@@ -6,7 +6,7 @@ const projects: Project[] = [
   {
     position: "React Native Developer",
     company: "Goalsetter",
-    companyColor: "hsla(264, 100%, 37%, 1)",
+    companyColor: "hsla(255, 45%, 35%, 1)",
     keyPoints: [
       "Design System",
       "Native Modules",
@@ -62,7 +62,7 @@ const projects: Project[] = [
         icon: Icons.SWIFT,
       },
     ],
-    colors: ["hsla(264, 100%, 58%, 1)", "hsla(264, 100%, 37%, 1)"],
+    colors: ["hsla(255, 45%, 77%, 1)", "hsla(255, 45%, 35%, 1)"],
     logo: Images.GOALSETTER,
     image: Images.GOALSETTER_SCREEN,
     imageCorner: Images.GOALSETTER_CORNER,
