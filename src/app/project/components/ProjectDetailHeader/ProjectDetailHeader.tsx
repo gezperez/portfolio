@@ -4,6 +4,7 @@ import React from "react";
 import { Project } from "@/types";
 import { Variants, motion } from "framer-motion";
 import Image from "next/image";
+import { useDeviceSize } from "@/hooks";
 
 type ProjectDetailHeaderProps = {
   project: Project;
@@ -14,7 +15,7 @@ type ProjectDetailHeaderProps = {
 const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
   const width = global.window && window.innerWidth;
 
-  const height = global.window && window.innerHeight;
+  const [deviceWidth, deviceHeight] = useDeviceSize();
 
   const { imageCorner, company, logo, position, colors } = project;
 
@@ -109,8 +110,10 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
             <Image
               alt={company}
               src={imageCorner}
-              width={700}
               className="aspect-auto"
+              width={deviceHeight / 2}
+              height={deviceHeight / 2}
+              priority
             />
           </motion.div>
           <motion.div
