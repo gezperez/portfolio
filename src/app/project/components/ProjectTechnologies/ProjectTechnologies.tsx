@@ -53,7 +53,7 @@ const ProjectTechnologies = ({ project, isOpen }: ProjectTechnologiesProps) => {
           style={{
             y,
           }}
-          className="relative grid grid-rows-3 grid-flow-col gap-20 -top-20"
+          className="relative grid grid-rows-3 grid-flow-col -top-20 gap-y-6"
         >
           {project.technologies.map((technology, index) => (
             <div key={index}>
