@@ -17,7 +17,8 @@ type Project = {
   image: keyof typeof Images;
   logo: keyof typeof Images;
   imageCorner: keyof typeof Images;
-  keyPoints: string[]
+  keyPoints: string[];
+  description?: string;
 };
 
 export type { Project, Tech };

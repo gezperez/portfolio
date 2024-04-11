@@ -151,6 +151,8 @@ const projects: Project[] = [
     ],
     initialDate: "Feb 2020",
     endDate: "Feb 2021",
+    description:
+      "During my time at Banco del Sol, I worked as part of a dynamic full-stack team responsible for critical features such as Loans, fixed terms, and balance details within the application. My role involved developing backend functionalities and creating intuitive user interfaces for the mobile app. I actively contributed to backend development, establishing communication channels with external providers and ensuring smooth data integration. Furthermore, I took charge of implementing a backend-for-frontend solution to standardize and optimize data handling processes across both mobile and web applications.",
     technologies: [
       {
         name: "React",
