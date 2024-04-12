@@ -31,7 +31,7 @@ type ProjectItemProps = {
 const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const { company, logo, image } = project;
 
-  const { dimensions, isMobile } = useDeviceSize();
+  const { dimensions } = useDeviceSize();
 
   const height = dimensions.height;
 

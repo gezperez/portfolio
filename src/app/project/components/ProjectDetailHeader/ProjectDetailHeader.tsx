@@ -115,7 +115,7 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
             <Image
               alt={company}
               src={imageCorner}
-              className="aspect-auto"
+              className="aspect-auto drop-shadow-xl"
               width={dimensions.height / 1.5}
               height={dimensions.fullHeight / 1.5}
               priority

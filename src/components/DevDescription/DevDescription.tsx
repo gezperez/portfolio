@@ -18,6 +18,7 @@ const links = [
     name: "GitHub",
     Icon: FaGithub,
     url: "https://github.com/gezperez",
+    type: "Email",
   },
   {
     name: "Gmail",
@@ -79,11 +80,32 @@ const DevDescription = () => {
             design systems.
           </div>
           <div className={`flex flex-row mt-6`}>
-            {links.map(({ Icon, url }, index) => (
-              <a key={index} className="mr-4" href={url} target="_blank">
-                <Icon color="white" size={dimensions.width / 50} />
-              </a>
-            ))}
+            {links.map(({ Icon, url, name }, index) => {
+              const handleOnPress = () => {
+                if (name === "Gmail") {
+                  const emailAddress = "ezequielperezpc@gmail.com";
+                  const subject = "";
+                  const body = "";
+
+                  const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
+                    subject
+                  )}&body=${encodeURIComponent(body)}`;
+                  window.open(mailtoLink);
+                }
+              };
+
+              return (
+                <a
+                  onClick={handleOnPress}
+                  key={index}
+                  className="mr-4"
+                  href={url}
+                  target="_blank"
+                >
+                  <Icon color="white" size={dimensions.width / 50} />
+                </a>
+              );
+            })}
           </div>
         </div>
       </div>

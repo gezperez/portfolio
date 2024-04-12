@@ -1,3 +1,4 @@
+import { Color } from "@/utils";
 import { Variants, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { CgClose } from "react-icons/cg";
@@ -52,7 +53,7 @@ const CloseProjectIcon = ({
     >
       <CgClose
         style={{
-          color: "gray",
+          color: Color.WHITE,
         }}
         size={40}
       />
