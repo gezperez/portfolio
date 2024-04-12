@@ -2,11 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import {
-  CloseProjectIcon,
-  ProjectDetailHeader,
-  ProjectTechnologies,
-} from "./components";
+import { CloseProjectIcon, ProjectDetailHeader } from "./components";
 import projects from "@/data/projects";
 
 const Component = () => {
@@ -43,7 +39,6 @@ const Component = () => {
   return (
     <Suspense>
       <ProjectDetailHeader project={project} index={index} isOpen={isOpen} />
-      <ProjectTechnologies project={project} isOpen={isOpen} />
       <CloseProjectIcon
         index={index}
         isOpen={isOpen}

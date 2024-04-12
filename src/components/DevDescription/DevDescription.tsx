@@ -6,6 +6,7 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { Variants, motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
+import { Color } from "@/utils";
 
 const links = [
   {
@@ -33,6 +34,7 @@ const containerVariants: Variants = {
   },
   open: {
     opacity: 0,
+    background: "black",
     transition: {
       duration: 0.5,
     },
@@ -52,13 +54,21 @@ const DevDescription = () => {
       initial={reset ? "open" : "closed"}
       animate={reset ? "open" : "closed"}
       className="h-screen flex flex-col justify-center items-center "
+      style={{
+        background: `linear-gradient(to bottom, ${Color.PRIMARY}, ${Color.WHITE})`,
+      }}
     >
       <div className="h-screen flex flex-col justify-between items-center">
-        <div className="h-full flex flex-col text-black justify-center items-start">
+        <div className="h-full flex flex-col text-white justify-center items-start">
           <div className="text-6xl font-semibold">EZEQUIEL PEREZ</div>
           <div className="font-normal text-2xl mt-2">Software Developer</div>
         </div>
-        <div className="bg-slate-700 w-screen flex justify-center items-start flex-col p-8 text-white">
+        <div
+          className="w-screen flex justify-center items-start flex-col p-8 text-white"
+          style={{
+            background: Color.PRIMARY,
+          }}
+        >
           <div className="text-justify w-1/2">
             Experienced mobile developer skilled in React Native, with a proven
             track record of delivering user-friendly interfaces and optimizing

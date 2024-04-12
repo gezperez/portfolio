@@ -15,7 +15,7 @@ const config: Config = {
       },
       colors: {
         react: "#61dafb",
-        leftDescription: '#FFF',
+        leftDescription: "#FFF",
         description: "#000",
         descriptionBackground: "#010920",
       },
