@@ -142,7 +142,7 @@ const projects: Project[] = [
   {
     position: "Full Stack Developer",
     company: "Banco del Sol",
-    companyColor: "hsla(18, 100%, 51%, 1)",
+    companyColor: "hsla(20, 100%, 62%, 1)",
     keyPoints: [
       "Design System",
       "Native Modules",
@@ -215,7 +215,7 @@ const projects: Project[] = [
         icon: Icons.SWIFT,
       },
     ],
-    colors: ["hsla(18, 100%, 65%, 1)", "hsla(18, 100%, 51%, 1)"],
+    colors: ["hsla(20, 100%, 83%, 1)", "hsla(20, 100%, 62%, 1)"],
     logo: Images.BANCO_DEL_SOL,
     image: Images.BANCO_DEL_SOL_SCREEN,
     imageCorner: Images.BANCO_DEL_SOL_CORNER,
@@ -223,7 +223,7 @@ const projects: Project[] = [
   {
     position: "React Native Developer",
     company: "Reba",
-    companyColor: "hsla(128, 53%, 59%, 1)",
+    companyColor: "hsla(150, 100%, 38%, 1)",
     keyPoints: [
       "Design System",
       "Native Modules",
@@ -283,7 +283,7 @@ const projects: Project[] = [
         icon: Icons.SWIFT,
       },
     ],
-    colors: ["hsla(128, 53%, 59%, 1)", "hsla(128, 53%, 85%, 1)"],
+    colors: ["hsla(150, 100%, 82%, 1)", "hsla(150, 100%, 38%, 1)"],
     logo: Images.REBA,
     image: Images.REBA_SCREEN,
     imageCorner: Images.REBA_CORNER,
@@ -291,7 +291,7 @@ const projects: Project[] = [
   {
     position: "ReactJS Developer",
     company: "Personal Flow",
-    companyColor: "hsla(193, 100%, 53%, 1)",
+    companyColor: "hsla(191, 82%, 47%, 1)",
     keyPoints: ["Design System", "Unit Testing", "E2E", "CI/CD"],
     initialDate: "Jun 2018",
     endDate: "Feb 2019",
@@ -327,7 +327,7 @@ const projects: Project[] = [
         icon: Icons.ZEPLIN,
       },
     ],
-    colors: ["hsla(153, 100%, 80%, 1)", "hsla(193, 100%, 53%, 1)"],
+    colors: ["hsla(191, 82%, 81%, 1)", "hsla(191, 82%, 47%, 1)"],
     logo: Images.PERSONAL,
     image: Images.PERSONAL_SCREEN,
     imageCorner: Images.PERSONAL_CORNER,

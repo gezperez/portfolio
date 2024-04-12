@@ -9,7 +9,9 @@ import { motion } from "framer-motion";
 type ProjectsProps = {};
 
 const Projects = ({}: ProjectsProps) => {
-  const [width, height] = useDeviceSize();
+  const { dimensions } = useDeviceSize();
+
+  const height = dimensions.height;
 
   return (
     <div className="h-screen flex flex-row justify-between items-center px-20">

@@ -40,7 +40,7 @@ const containerVariants: Variants = {
 };
 
 const DevDescription = () => {
-  const [width] = useDeviceSize();
+  const { dimensions } = useDeviceSize();
 
   const searchParams = useSearchParams();
 
@@ -71,7 +71,7 @@ const DevDescription = () => {
           <div className={`flex flex-row mt-6`}>
             {links.map(({ Icon, url }, index) => (
               <a key={index} className="mr-4" href={url} target="_blank">
-                <Icon color="white" size={width / 50} />
+                <Icon color="white" size={dimensions.width / 50} />
               </a>
             ))}
           </div>

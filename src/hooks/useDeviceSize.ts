@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 const useDeviceSize = () => {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
+  const [fullHeight, setFullHeight] = useState(0);
 
   const handleWindowResize = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
+    setFullHeight(window.document.body.offsetHeight);
   };
 
   useEffect(() => {
@@ -19,7 +21,15 @@ const useDeviceSize = () => {
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 
-  return [width, height];
+  const dimensions = {
+    width,
+    height,
+    fullHeight,
+  };
+
+  const isMobile = width < 768;
+
+  return { dimensions, isMobile };
 };
 
 export default useDeviceSize;

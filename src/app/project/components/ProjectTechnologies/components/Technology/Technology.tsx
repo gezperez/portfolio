@@ -9,7 +9,9 @@ type TechnologyProps = {
 const Technology = ({ technology }: TechnologyProps) => {
   const { icon, name } = technology;
 
-  const [width] = useDeviceSize();
+  const { dimensions } = useDeviceSize();
+
+  const width = dimensions.width;
 
   return (
     <div

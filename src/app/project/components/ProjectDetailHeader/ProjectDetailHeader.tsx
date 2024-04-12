@@ -15,7 +15,7 @@ type ProjectDetailHeaderProps = {
 const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
   const width = global.window && window.innerWidth;
 
-  const [deviceWidth, deviceHeight] = useDeviceSize();
+  const { dimensions } = useDeviceSize();
 
   const { imageCorner, company, logo, position, colors } = project;
 
@@ -113,8 +113,8 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
               alt={company}
               src={imageCorner}
               className="aspect-auto"
-              width={deviceHeight / 1.5}
-              height={deviceHeight / 1.5}
+              width={dimensions.height / 1.5}
+              height={dimensions.fullHeight / 1.5}
               priority
             />
           </motion.div>

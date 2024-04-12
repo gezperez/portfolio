@@ -32,11 +32,11 @@ const technologiesVariants: Variants = {
 const ProjectTechnologies = ({ project, isOpen }: ProjectTechnologiesProps) => {
   const { scrollY } = useScroll();
 
-  const [width, height] = useDeviceSize();
+  const { dimensions } = useDeviceSize();
 
   const { technologies, description } = project;
 
-  const y = useTransform(scrollY, [0, 250], [0, height / 2 - 120], {
+  const y = useTransform(scrollY, [0, 250], [0, dimensions.height / 2 - 120], {
     clamp: true,
   });
 

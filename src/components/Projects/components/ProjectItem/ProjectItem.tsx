@@ -31,7 +31,11 @@ type ProjectItemProps = {
 const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const { company, logo, image } = project;
 
-  const [width, height] = useDeviceSize();
+  const { dimensions, isMobile } = useDeviceSize();
+
+  const height = dimensions.height;
+
+  const width = dimensions.width;
 
   const router = useRouter();
 
@@ -48,6 +52,15 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const reset = paramsReset && Number(paramsIndex) === index;
 
   const isProjectSelected = projectIndex === index;
+
+  useEffect(() => {
+    if (paramsReset) {
+      window.scrollTo({
+        top: height,
+        behavior: "smooth",
+      });
+    }
+  }, [paramsReset, height]);
 
   const { scrollY } = useScroll();
 
@@ -136,7 +149,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
     setProjectIndex(index);
     return setTimeout(
       () => router.push(`/project?company=${company}&index=${index}`),
-      1500
+      1300
     );
   };
 
