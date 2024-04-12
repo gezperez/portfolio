@@ -71,11 +71,11 @@ const DevDescription = () => {
           }}
         >
           <div className="text-justify w-1/2">
-            Experienced mobile developer skilled in React Native, with a proven
+            Experienced Software Developer, with a proven
             track record of delivering user-friendly interfaces and optimizing
             performance. I bring dedication and expertise to every project,
             focusing on optimizing cross-application features, ensuring the
-            application stays updated with the latest React Native guidelines
+            application stays updated with the latest guidelines
             and library versions, and creating scalable and comprehensive UI
             design systems.
           </div>
