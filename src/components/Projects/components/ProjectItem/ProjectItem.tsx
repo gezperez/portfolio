@@ -57,7 +57,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
     if (paramsReset) {
       window.scrollTo({
         top: height,
-        behavior: "smooth",
+        behavior: "instant",
       });
     }
   }, [paramsReset, height]);
