@@ -37,21 +37,23 @@ const Component = () => {
   }
 
   return (
-    <Suspense>
+    <>
       <ProjectDetailHeader project={project} index={index} isOpen={isOpen} />
       <CloseProjectIcon
         index={index}
         isOpen={isOpen}
         onClose={handleClosePress}
       />
-    </Suspense>
+    </>
   );
 };
 
 export default function Page() {
   return (
     <div>
-      <Component />
+      <Suspense>
+        <Component />
+      </Suspense>
     </div>
   );
 }
