@@ -50,10 +50,8 @@ const Component = () => {
 
 export default function Page() {
   return (
-    <Suspense>
-      <div>
-        <Component />
-      </div>
-    </Suspense>
+    <div>
+      <Component />
+    </div>
   );
 }

@@ -1,9 +1,10 @@
-import Icons from "@/assets/icons";
+import { IconType } from "react-icons";
 
 type Link = {
   name: string;
-  icon: keyof typeof Icons;
-  url: string;
+  Icon: IconType;
+  url?: string;
+  type?: string;
 };
 
 export default Link;

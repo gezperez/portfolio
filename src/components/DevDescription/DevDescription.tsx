@@ -2,29 +2,10 @@
 
 import { useDeviceSize } from "@/hooks";
 import React from "react";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { SiGmail } from "react-icons/si";
 import { Variants, motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { Color } from "@/utils";
-
-const links = [
-  {
-    name: "LinkedIn",
-    Icon: FaLinkedin,
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-  },
-  {
-    name: "GitHub",
-    Icon: FaGithub,
-    url: "https://github.com/gezperez",
-    type: "Email",
-  },
-  {
-    name: "Gmail",
-    Icon: SiGmail,
-  },
-];
+import links from "@/data/links";
 
 const containerVariants: Variants = {
   closed: {
@@ -49,6 +30,19 @@ const DevDescription = () => {
 
   const reset = searchParams.get("reset");
 
+  const handleOnPress = (name: string) => {
+    if (name === "Gmail") {
+      const emailAddress = "ezequielperezpc@gmail.com";
+      const subject = "";
+      const body = "";
+
+      const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+      window.open(mailtoLink);
+    }
+  };
+
   return (
     <motion.div
       variants={containerVariants}
@@ -56,12 +50,12 @@ const DevDescription = () => {
       animate={reset ? "open" : "closed"}
       className="h-screen flex flex-col justify-center items-center "
       style={{
-        background: `linear-gradient(to bottom, ${Color.PRIMARY}, ${Color.WHITE})`,
+        background: `linear-gradient(to left bottom, ${Color.PRIMARY}, ${Color.WHITE})`,
       }}
     >
       <div className="h-screen flex flex-col justify-between items-center">
         <div className="h-full flex flex-col text-white justify-center items-start">
-          <div className="text-6xl font-semibold">EZEQUIEL PEREZ</div>
+          <div className="text-6xl font-normal">EZEQUIEL PEREZ</div>
           <div className="font-normal text-2xl mt-2">Software Developer</div>
         </div>
         <div
@@ -71,32 +65,18 @@ const DevDescription = () => {
           }}
         >
           <div className="text-justify w-1/2">
-            Experienced Software Developer, with a proven
-            track record of delivering user-friendly interfaces and optimizing
-            performance. I bring dedication and expertise to every project,
-            focusing on optimizing cross-application features, ensuring the
-            application stays updated with the latest guidelines
-            and library versions, and creating scalable and comprehensive UI
-            design systems.
+            Experienced Software Developer, with a proven track record of
+            delivering user-friendly interfaces and optimizing performance. I
+            bring dedication to every project, focusing on
+            optimizing cross-application features, ensuring the application
+            stays updated with the latest guidelines and library versions, and
+            creating scalable and comprehensive UI design systems.
           </div>
           <div className={`flex flex-row mt-6`}>
             {links.map(({ Icon, url, name }, index) => {
-              const handleOnPress = () => {
-                if (name === "Gmail") {
-                  const emailAddress = "ezequielperezpc@gmail.com";
-                  const subject = "";
-                  const body = "";
-
-                  const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(
-                    subject
-                  )}&body=${encodeURIComponent(body)}`;
-                  window.open(mailtoLink);
-                }
-              };
-
               return (
                 <a
-                  onClick={handleOnPress}
+                  onClick={() => handleOnPress(name)}
                   key={index}
                   className="mr-4"
                   href={url}

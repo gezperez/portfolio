@@ -19,7 +19,7 @@ const Projects = ({}: ProjectsProps) => {
       <div
         className="w-screen h-screen flex flex-row justify-between items-center px-20"
         style={{
-          background: `linear-gradient(to top, ${Color.PRIMARY}, ${Color.WHITE})`,
+          background: `linear-gradient(to right top, ${Color.PRIMARY}, ${Color.WHITE})`,
         }}
       >
         {projects.map((project, index) => {

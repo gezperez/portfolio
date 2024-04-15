@@ -1,46 +1,22 @@
-import Icons from "@/assets/icons";
 import { Link } from "@/types";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { SiGmail } from "react-icons/si";
 
 const links: Link[] = [
   {
     name: "LinkedIn",
+    Icon: FaLinkedin,
     url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
   },
   {
     name: "GitHub",
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
+    Icon: FaGithub,
+    url: "https://github.com/gezperez",
+    type: "Email",
   },
   {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
-  },
-  {
-    name: "GitHub",
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
-  },
-  {
-    name: "GitHub",
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
-  },
-  {
-    name: "GitHub",
-    url: "https://www.linkedin.com/in/ezequiel-p%C3%A9rez-888629184/",
-    icon: Icons.TYPESCRIPT,
+    name: "Gmail",
+    Icon: SiGmail,
   },
 ];
 
