@@ -2,7 +2,8 @@
 
 import { useDeviceSize } from "@/hooks";
 import { Project } from "@/types";
-import { motion, useAnimate } from "framer-motion";
+import { Color } from "@/utils";
+import { Variants, motion, useAnimate } from "framer-motion";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
@@ -13,11 +14,9 @@ type ProjectItemProps = {
 };
 
 const ProjectItem = ({ project, index }: ProjectItemProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const [scope, animate] = useAnimate();
-
   const router = useRouter();
+
+  console.log("aca", index);
 
   const searchParams = useSearchParams();
 
@@ -41,85 +40,112 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
     router.push(`/project?company=${company}&index=${index}`);
   }, [company, index, router]);
 
+  const handleResetParams = () => {
+    router.push(`/`, { scroll: false });
+  };
+
   const handleProjectPress = () => {
     if (projectIndex && index === projectIndex) {
       return setProjectIndex(undefined);
     }
 
     setProjectIndex(index);
+    return setTimeout(
+      () => router.push(`/project?company=${company}&index=${index}`),
+      2000
+    );
   };
 
-  const openAnimation = useCallback(async () => {
-    setIsExpanded(true);
-    await animate(
-      scope.current,
-      { x: dimensions.width + 10 },
-      { duration: 0.5 }
-    );
-    await animate(scope.current, { scaleY: 15 }, { duration: 0.5 });
-    handleNavigation();
-  }, [animate, dimensions.width, handleNavigation, scope]);
-
-  const closeAnimation = useCallback(async () => {
-    await animate(scope.current, { scaleY: 1 }, { duration: 0.5 });
-    await animate(scope.current, { x: 0 }, { duration: 0.5 });
-    setIsExpanded(false);
-  }, [animate, scope]);
-
   useEffect(() => {
-    if (scope.current) {
-      if (isProjectSelected) {
-        openAnimation();
-      } else {
-        closeAnimation();
-      }
+    if (paramsIndex) {
+      setTimeout(() => router.push(`/`, { scroll: false }), 1500);
     }
-  }, [
-    animate,
-    closeAnimation,
-    dimensions.width,
-    isProjectSelected,
-    openAnimation,
-    reset,
-    scope,
-  ]);
+  }, [paramsIndex, router]);
 
-  useEffect(() => {
-    if (reset) {
-      setTimeout(() => router.push(`/`, { scroll: false }), 1000);
-    }
-  }, [reset, router]);
+  const duration = 1;
+
+  const containerVariants: Variants = {
+    closed: {
+      scaleY: 1,
+      zIndex: reset ? 999 : 0,
+      transition: {
+        duration,
+      },
+    },
+    open: {
+      scaleY: 15,
+      zIndex: 999,
+      transition: {
+        duration,
+        delay: duration,
+      },
+    },
+  };
+
+  const backgroundVariants: Variants = {
+    closed: {
+      background: Color.PRIMARY,
+      transition: {
+        duration,
+        delay: duration,
+      },
+    },
+    open: {
+      background: companyColor,
+      transition: {
+        duration,
+      },
+    },
+  };
+
+  const contentVariants: Variants = {
+    closed: {
+      opacity: 1,
+      transition: {
+        duration,
+        delay: duration,
+      },
+    },
+    open: {
+      opacity: 0,
+      transition: {
+        duration,
+      },
+    },
+  };
 
   return (
     <motion.div
-      className="my-4 flex flex-row justify-between items-center relative"
-      style={{
-        height: dimensions.height / 8,
-      }}
-      onClick={handleProjectPress}
+      variants={containerVariants}
+      initial={reset ? "open" : "closed"}
+      animate={isProjectSelected ? "open" : "closed"}
     >
-      <div className="flex h-full justify-between items-center">
+      <motion.div
+        variants={backgroundVariants}
+        initial={reset ? "open" : "closed"}
+        animate={isProjectSelected ? "open" : "closed"}
+      >
         <motion.div
-          className="h-full"
+          className="my-4 flex flex-row justify-between items-center relative"
           style={{
-            position: "absolute",
-            width: dimensions.width + 20,
-            left: -dimensions.width - 10,
-            borderTopRightRadius: 30,
-            borderBottomRightRadius: 30,
-            background: companyColor,
-            zIndex: isExpanded ? 999 : 0,
+            height: dimensions.height / 8,
           }}
-          ref={scope}
-        />
-        <div className="ml-6">
-          <div className="font-semibold text-xl ml-6 mb-2">{position}</div>
-          <div className="font-normal text-lg ml-6">{company}</div>
-        </div>
-      </div>
-      <div className="mr-8">
-        <BsChevronRight size={dimensions.height / 30} />
-      </div>
+          onClick={handleProjectPress}
+          variants={contentVariants}
+          initial={reset ? "open" : "closed"}
+          animate={isProjectSelected ? "open" : "closed"}
+        >
+          <div className="flex h-full justify-between items-center">
+            <div className="ml-6">
+              <div className="font-semibold text-xl ml-6 mb-2">{position}</div>
+              <div className="font-normal text-lg ml-6">{company}</div>
+            </div>
+          </div>
+          <div className="mr-8">
+            <BsChevronRight size={dimensions.height / 30} />
+          </div>
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 };

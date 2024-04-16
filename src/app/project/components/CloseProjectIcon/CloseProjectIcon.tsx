@@ -22,7 +22,6 @@ const containerVariants: Variants = {
     opacity: 1,
     transition: {
       duration: 1,
-      delay: 1,
     },
   },
 };
