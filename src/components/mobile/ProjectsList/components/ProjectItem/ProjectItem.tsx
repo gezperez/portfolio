@@ -2,8 +2,9 @@
 
 import { useDeviceSize } from "@/hooks";
 import { Project } from "@/types";
-import { Variants, motion, useAnimate } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import { motion, useAnimate } from "framer-motion";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useCallback, useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
 
 type ProjectItemProps = {
@@ -12,36 +13,82 @@ type ProjectItemProps = {
 };
 
 const ProjectItem = ({ project, index }: ProjectItemProps) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
 
   const [scope, animate] = useAnimate();
+
+  const router = useRouter();
+
+  const searchParams = useSearchParams();
+
+  const paramsReset = searchParams.get("reset");
+
+  const paramsIndex = searchParams.get("index");
+
+  const [projectIndex, setProjectIndex] = useState<number | undefined>(
+    undefined
+  );
+
+  const reset = paramsReset && Number(paramsIndex) === index;
+
+  const isProjectSelected = projectIndex === index;
 
   const { company, companyColor, position } = project;
 
   const { dimensions } = useDeviceSize();
 
-  const handleItemPress = () => {
-    setIsOpen(!isOpen);
+  const handleNavigation = useCallback(() => {
+    router.push(`/project?company=${company}&index=${index}`);
+  }, [company, index, router]);
+
+  const handleProjectPress = () => {
+    if (projectIndex && index === projectIndex) {
+      return setProjectIndex(undefined);
+    }
+
+    setProjectIndex(index);
   };
+
+  const openAnimation = useCallback(async () => {
+    setIsExpanded(true);
+    await animate(
+      scope.current,
+      { x: dimensions.width + 10 },
+      { duration: 0.5 }
+    );
+    await animate(scope.current, { scaleY: 15 }, { duration: 0.5 });
+    handleNavigation();
+  }, [animate, dimensions.width, handleNavigation, scope]);
+
+  const closeAnimation = useCallback(async () => {
+    await animate(scope.current, { scaleY: 1 }, { duration: 0.5 });
+    await animate(scope.current, { x: 0 }, { duration: 0.5 });
+    setIsExpanded(false);
+  }, [animate, scope]);
 
   useEffect(() => {
     if (scope.current) {
-      if (isOpen) {
-        setIsExpanded(true);
-        animate(scope.current, { x: dimensions.width + 10 }, { duration: 0.5 });
-        setTimeout(() => {
-          animate(scope.current, { scaleY: 20 }, { duration: 0.5 });
-        }, 500);
+      if (isProjectSelected) {
+        openAnimation();
       } else {
-        animate(scope.current, { scaleY: 1 }, { duration: 0.5 });
-        setTimeout(() => {
-          setIsExpanded(false);
-          animate(scope.current, { x: 0 }, { duration: 0.5 });
-        }, 500);
+        closeAnimation();
       }
     }
-  }, [animate, dimensions.width, isOpen, scope]);
+  }, [
+    animate,
+    closeAnimation,
+    dimensions.width,
+    isProjectSelected,
+    openAnimation,
+    reset,
+    scope,
+  ]);
+
+  useEffect(() => {
+    if (reset) {
+      setTimeout(() => router.push(`/`, { scroll: false }), 1000);
+    }
+  }, [reset, router]);
 
   return (
     <motion.div
@@ -49,7 +96,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
       style={{
         height: dimensions.height / 8,
       }}
-      onClick={handleItemPress}
+      onClick={handleProjectPress}
     >
       <div className="flex h-full justify-between items-center">
         <motion.div

@@ -1,10 +1,11 @@
+import { useDeviceSize } from "@/hooks";
 import { Color } from "@/utils";
 import { Variants, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { CgClose } from "react-icons/cg";
 
 type CloseProjectIconProps = {
-  onClose: () => void;
+  onClose?: () => void;
   index: string | null;
   isOpen: boolean;
 };
@@ -33,11 +34,15 @@ const CloseProjectIcon = ({
 }: CloseProjectIconProps) => {
   const router = useRouter();
 
+  const { isMobile } = useDeviceSize();
+
   const handleClosePress = () => {
-    onClose();
+    if (onClose) {
+      onClose();
+    }
     setTimeout(
       () => router.push(`/?reset=${true}&index=${index}`, { scroll: false }),
-      2000
+      isMobile ? 1000 : 2000
     );
   };
 

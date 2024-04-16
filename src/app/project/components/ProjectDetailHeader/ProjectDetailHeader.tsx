@@ -150,7 +150,7 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
         </div>
         <div className="mt-14">
           <div className="font-semibold mb-4 text-lg text-leftDescription">
-            Technologies
+            TECHNOLOGIES
           </div>
           <div className="w-full grid grid-rows-2 grid-flow-col gap-6 justify-center items-center">
             {project.technologies.map((technology, index) => (

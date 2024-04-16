@@ -4,11 +4,15 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CloseProjectIcon, ProjectDetailHeader } from "./components";
 import projects from "@/data/projects";
+import { useDeviceSize } from "@/hooks";
+import { ProjectDetail } from "@/components/mobile";
 
 const Component = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const searchParams = useSearchParams();
+
+  const { isMobile } = useDeviceSize();
 
   const company = searchParams.get("company");
 
@@ -36,15 +40,31 @@ const Component = () => {
     return null;
   }
 
+  const renderContent = () => {
+    if (isMobile) {
+      return <ProjectDetail project={project} index={index} />;
+    }
+
+    return (
+      <>
+        <ProjectDetailHeader project={project} index={index} isOpen={isOpen} />
+        <CloseProjectIcon
+          index={index}
+          isOpen={isOpen}
+          onClose={handleClosePress}
+        />
+      </>
+    );
+  };
+
   return (
-    <>
-      <ProjectDetailHeader project={project} index={index} isOpen={isOpen} />
-      <CloseProjectIcon
-        index={index}
-        isOpen={isOpen}
-        onClose={handleClosePress}
-      />
-    </>
+    <main
+      style={{
+        background: project.companyColor,
+      }}
+    >
+      {renderContent()}
+    </main>
   );
 };
 
