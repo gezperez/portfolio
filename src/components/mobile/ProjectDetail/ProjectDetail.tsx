@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Project } from "@/types";
 import { Variants, motion } from "framer-motion";
 import Image from "next/image";
-import { useDeviceSize } from "@/hooks";
 import { CloseProjectIcon } from "@/app/project/components";
 
 type ProjectDetailProps = {
@@ -30,8 +29,6 @@ const descriptionVariants: Variants = {
 const ProjectDetail = ({ project, index }: ProjectDetailProps) => {
   const { company, logo, description, position, technologies } = project;
 
-  const { dimensions } = useDeviceSize();
-
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOnClose = () => {
@@ -56,8 +53,8 @@ const ProjectDetail = ({ project, index }: ProjectDetailProps) => {
             alt={company}
             src={logo}
             className="drop-shadow-xl overflow-hidden mt-10 mb-6"
-            width={dimensions.height / 6}
-            height={dimensions.height / 6}
+            width={120}
+            height={120}
             priority
             style={{
               borderRadius: 30,
