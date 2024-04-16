@@ -10,7 +10,11 @@ export default function Page() {
 
   const renderContent = () => {
     if (isMobile) {
-      return <ProjectsList />;
+      return (
+        <Suspense>
+          <ProjectsList />
+        </Suspense>
+      );
     }
 
     return (
