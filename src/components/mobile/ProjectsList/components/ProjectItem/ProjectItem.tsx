@@ -16,8 +16,6 @@ type ProjectItemProps = {
 const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const router = useRouter();
 
-  console.log("aca", index);
-
   const searchParams = useSearchParams();
 
   const paramsReset = searchParams.get("reset");
@@ -52,17 +50,17 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
     setProjectIndex(index);
     return setTimeout(
       () => router.push(`/project?company=${company}&index=${index}`),
-      2000
+      1000
     );
   };
 
   useEffect(() => {
     if (paramsIndex) {
-      setTimeout(() => router.push(`/`, { scroll: false }), 1500);
+      setTimeout(() => router.push(`/`, { scroll: false }), 1000);
     }
   }, [paramsIndex, router]);
 
-  const duration = 1;
+  const duration = 0.5;
 
   const containerVariants: Variants = {
     closed: {

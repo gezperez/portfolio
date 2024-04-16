@@ -41,7 +41,7 @@ const CloseProjectIcon = ({
     }
     setTimeout(
       () => router.push(`/?reset=${true}&index=${index}`, { scroll: false }),
-      isMobile ? 1000 : 2000
+      isMobile ? 500 : 2000
     );
   };
 

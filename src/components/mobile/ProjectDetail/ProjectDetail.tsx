@@ -10,17 +10,19 @@ type ProjectDetailProps = {
   index: string | null;
 };
 
+const duration = 0.5;
+
 const descriptionVariants: Variants = {
   closed: {
     opacity: 0,
     transition: {
-      duration: 1,
+      duration,
     },
   },
   open: {
     opacity: 1,
     transition: {
-      duration: 1,
+      duration,
     },
   },
 };
