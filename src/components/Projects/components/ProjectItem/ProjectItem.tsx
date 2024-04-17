@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useDeviceSize } from "@/hooks";
 import { Project } from "@/types";
-import { Variants, motion, useScroll, useTransform } from "framer-motion";
+import { Variants, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -52,50 +52,6 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
   const reset = paramsReset && Number(paramsIndex) === index;
 
   const isProjectSelected = projectIndex === index;
-
-  useEffect(() => {
-    if (paramsReset) {
-      window.scrollTo({
-        top: height,
-        behavior: "instant",
-      });
-    }
-  }, [paramsReset, height]);
-
-  const { scrollY } = useScroll();
-
-  const getTransformValues = () => {
-    if (index === 3) {
-      return {
-        scroll: scrollY,
-        first: height / 2.5,
-        second: height / 1.5,
-      };
-    }
-
-    if (index === 4) {
-      return {
-        scroll: scrollY,
-        first: height / 2,
-        second: height / 2.5,
-      };
-    }
-
-    return {
-      scroll: scrollY,
-      first: 0,
-      second: 0,
-    };
-  };
-
-  const y = useTransform(
-    getTransformValues().scroll,
-    [0, getTransformValues().first],
-    [0, getTransformValues().first],
-    {
-      clamp: true,
-    }
-  );
 
   const getPosition = () => {
     if (index === 0) {
@@ -155,7 +111,7 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
 
   useEffect(() => {
     if (reset) {
-      setTimeout(() => router.push(`/`, { scroll: false }), 1000);
+      setTimeout(() => router.push(`/projects`, { scroll: false }), 1000);
     }
   }, [reset, router]);
 
@@ -171,9 +127,6 @@ const ProjectItem = ({ project, index }: ProjectItemProps) => {
       initial={reset ? "open" : "closed"}
       animate={isProjectSelected ? "open" : "closed"}
       onClick={() => handleProjectPress(index)}
-      style={{
-        y,
-      }}
     >
       <Image
         src={image}

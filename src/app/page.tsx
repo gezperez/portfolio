@@ -18,12 +18,9 @@ export default function Page() {
     }
 
     return (
-      <>
-        <Suspense>
-          <DevDescription />
-        </Suspense>
-        <Projects />
-      </>
+      <Suspense>
+        <DevDescription />
+      </Suspense>
     );
   };
 

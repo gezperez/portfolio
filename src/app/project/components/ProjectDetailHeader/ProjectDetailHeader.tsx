@@ -21,7 +21,7 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
 
   const { dimensions } = useDeviceSize();
 
-  const { imageCorner, company, description, position, colors } = project;
+  const { imageCorner, company, description, position } = project;
 
   const leftWindowVariants: Variants = {
     closed: {

@@ -1,54 +1,74 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import projects from "@/data/projects";
 import { ProjectItem } from "./components";
-import { useDeviceSize } from "@/hooks";
-import { motion } from "framer-motion";
 import { Color } from "@/utils";
+import { IoArrowBack } from "react-icons/io5";
+import { motion, useAnimate } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 type ProjectsProps = {};
 
 const Projects = ({}: ProjectsProps) => {
-  const { dimensions } = useDeviceSize();
+  const router = useRouter();
 
-  const height = dimensions.height;
+  const [scope, animate] = useAnimate();
+
+  const handleBackPress = async () => {
+    await animate(scope.current, { opacity: 0 }, { duration: 0.5 });
+    router.push(`/`, { scroll: false });
+  };
+
+  useEffect(() => {
+    if (scope?.current) {
+      animate(scope.current, { opacity: 1 }, { duration: 0.5 });
+    }
+  }, [animate, scope]);
 
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div
-        className="w-screen h-screen flex flex-row justify-between items-center px-20"
-        style={{
-          background: `linear-gradient(to right top, ${Color.PRIMARY}, ${Color.WHITE})`,
-        }}
-      >
+    <motion.div
+      className="flex flex-col justify-center items-start"
+      style={{
+        background: `linear-gradient(to left top, ${Color.PRIMARY}, ${Color.WHITE})`,
+        opacity: 0,
+      }}
+      ref={scope}
+    >
+      <div className="flex flex-row top-10 left-10 fixed items-center">
+        <motion.div
+          whileHover={{ scale: 1.3 }}
+          whileTap={{ scale: 0.8 }}
+          onClick={handleBackPress}
+        >
+          <IoArrowBack
+            style={{
+              color: Color.PRIMARY,
+            }}
+            size={30}
+          />
+        </motion.div>
+        <div
+          className="ml-6 text-3xl font-semibold"
+          style={{
+            color: Color.PRIMARY,
+          }}
+        >
+          Projects
+        </div>
+      </div>
+      <div className="w-screen h-screen flex flex-row justify-between items-center px-20">
         {projects.map((project, index) => {
-          let top = 0;
-
-          if (index === projects.length - 2) {
-            top = -height / 2.5;
-          }
-
-          if (index === projects.length - 1) {
-            top = -height / 2;
-          }
-
           return (
-            <motion.div
-              key={index}
-              style={{
-                position: "relative",
-                top,
-              }}
-            >
+            <div key={index}>
               <Suspense>
                 <ProjectItem project={project} index={index} />
               </Suspense>
-            </motion.div>
+            </div>
           );
         })}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
