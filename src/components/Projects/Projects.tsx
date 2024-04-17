@@ -8,9 +8,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { motion, useAnimate } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-type ProjectsProps = {};
-
-const Projects = ({}: ProjectsProps) => {
+const Projects = () => {
   const router = useRouter();
 
   const [scope, animate] = useAnimate();

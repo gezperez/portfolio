@@ -10,11 +10,10 @@ const Images = {
   PERSONAL_CORNER: require("./personal-corner.png"),
   BANCO_DEL_SOL: require("./bancodelsol.png"),
   BANCO_DEL_SOL_SCREEN: require("./bancodelsol-screen.png"),
-  BANCO_DEL_SOL_CORNER: require("./bancodelsol-corner-2.png"),
+  BANCO_DEL_SOL_CORNER: require("./bancodelsol-corner.png"),
   REBA: require("./Reba.png"),
   REBA_SCREEN: require("./reba-screen.png"),
   REBA_CORNER: require("./reba-corner.png"),
-  IPHONE: require("./iphone.png"),
 };
 
 export default Images;

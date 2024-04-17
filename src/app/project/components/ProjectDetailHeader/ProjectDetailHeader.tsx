@@ -6,7 +6,6 @@ import { Variants, motion } from "framer-motion";
 import Image from "next/image";
 import { useDeviceSize } from "@/hooks";
 import { Color } from "@/utils";
-import { Technology } from "../ProjectTechnologies/components";
 
 type ProjectDetailHeaderProps = {
   project: Project;
@@ -155,7 +154,20 @@ const ProjectDetailHeader = ({ project, isOpen }: ProjectDetailHeaderProps) => {
           <div className="w-full grid grid-rows-2 grid-flow-col gap-6 justify-center items-center">
             {project.technologies.map((technology, index) => (
               <div key={index} className="drop-shadow-xl">
-                <Technology technology={technology} />
+                <div
+                  className="flex flex-col justify-between items-center"
+                  style={{
+                    height: width / 20,
+                    width: width / 24,
+                  }}
+                >
+                  <Image
+                    alt={technology.name}
+                    src={technology.icon}
+                    width={width / 7}
+                    height={width / 7}
+                  />
+                </div>
               </div>
             ))}
           </div>
