@@ -59,8 +59,10 @@ const DevDescription = () => {
       variants={containerVariants}
       className="h-screen flex flex-col justify-center items-center "
       style={{
-        opacity: 0,
         background: `linear-gradient(to right bottom, ${Color.PRIMARY}, ${Color.WHITE})`,
+      }}
+      initial={{
+        opacity: 0,
       }}
       ref={scope}
     >

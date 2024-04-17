@@ -31,6 +31,8 @@ const Projects = ({}: ProjectsProps) => {
       className="flex flex-col justify-center items-start"
       style={{
         background: `linear-gradient(to left top, ${Color.PRIMARY}, ${Color.WHITE})`,
+      }}
+      initial={{
         opacity: 0,
       }}
       ref={scope}
